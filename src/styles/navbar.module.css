@@ -1,0 +1,32 @@
+.header{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  padding: 10px;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid gray;
+}
+
+.main{
+  max-width: 1000px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  height: 64px;
+  width: 64px;
+}
+
+.searchBar{
+  height: 40px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  border: 1px solid white;
+}

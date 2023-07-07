@@ -1,0 +1,33 @@
+.button{
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  font-size: 20px;
+  background-color: #a2c0da;
+  color: #1a1a1a;
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+}
+
+.button:not(:disabled):hover{
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+  background-color: #4f9adb;
+}
+
+
+.loader{
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
