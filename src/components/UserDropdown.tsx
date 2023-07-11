@@ -21,7 +21,7 @@ export default function UserDropdown({ user }: UserDropdownProps) {
           }}
         />
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content className={CSS.DropdownMenuContent} align="end">
+      <DropdownMenu.Content className={CSS.DropdownMenuContent} align="center">
         <div className={CSS.DropdownUser}>
           <div className={CSS.DropdownUserData}>
             {user.name && <span style={{fontWeight: 'bold', fontSize: '18px'}}>{user.name}</span>}

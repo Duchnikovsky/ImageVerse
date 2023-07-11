@@ -21,11 +21,11 @@
 .DropdownMenuContent,
 .DropdownMenuSubContent {
   min-width: 200px;
-  background-color: #1a1a0c;
+  background-color: #f2f2f2;
   border-radius: 6px;
   padding: 10px;
   margin-top: 5px;
-  box-shadow: 0px 10px 38px -10px rgba(240, 240, 240, 0.35), 0px 10px 20px -15px rgba(240, 240, 240, 0.2);
+  box-shadow: 0px 10px 38px -10px rgba(25, 25, 25, 0.35), 0px 10px 20px -15px rgba(25, 25, 25, 0.2);
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
@@ -57,7 +57,7 @@
 .DropdownMenuSubTrigger {
   font-size: 16px;
   line-height: 1;
-  color: #fdfcfe;
+  color: black;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -70,14 +70,14 @@
 
 .DropdownMenuSubTrigger[data-state='open'] {
   background-color: #ede9fe;
-  color: rgb(87, 70, 175);
+  color: black;
 }
 
 .DropdownMenuItem[data-disabled],
 .DropdownMenuCheckboxItem[data-disabled],
 .DropdownMenuRadioItem[data-disabled],
 .DropdownMenuSubTrigger[data-disabled] {
-  color: #c8c7cb;
+  color: black;
   pointer-events: none;
 }
 
@@ -85,8 +85,8 @@
 .DropdownMenuCheckboxItem[data-highlighted],
 .DropdownMenuRadioItem[data-highlighted],
 .DropdownMenuSubTrigger[data-highlighted] {
-  background-color: #fdfcfe;
-  color: #1a1a0c;
+  background-color: #1a1a0c;
+  color: white;
 }
 
 .DropdownMenuLabel {
@@ -98,7 +98,7 @@
 
 .DropdownMenuSeparator {
   height: 1px;
-  background-color: #fdfcfe;
+  background-color: gray;
   margin: 5px;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .DropdownMenuArrow {
-  fill: white;
+  fill: black;
 }
 
 .IconButton {

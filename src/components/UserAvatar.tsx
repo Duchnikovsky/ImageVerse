@@ -1,3 +1,4 @@
+"use client"
 import { User } from "next-auth";
 import React from "react";
 import * as Avatar from '@radix-ui/react-avatar';
@@ -25,3 +26,5 @@ export default function UserAvatar({ user }: UserAvatarProps) {
     )}
   </Avatar.Root>;
 }
+
+{/* <Link href="/signIn"></Link> */}

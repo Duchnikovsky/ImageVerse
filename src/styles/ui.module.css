@@ -3,8 +3,8 @@
   outline: none;
   border-radius: 10px;
   font-size: 20px;
-  background-color: #a2c0da;
-  color: #1a1a1a;
+  background-color: #1a1a1a;
+  color: white;
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
@@ -15,7 +15,9 @@
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
-  background-color: #4f9adb;
+  background-color: white;
+  color: #1a1a1a;
+  border: 1px solid #1a1a1a;
 }
 
 
