@@ -7,16 +7,23 @@
   background-color: rgb(50, 50, 50, 0.3);
   overflow-y: hidden;
   backdrop-filter: blur(3px);
+  z-index: 11;
+}
+
+.main{
+  max-width: 1000px;
+  margin: auto;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 .container{
-  padding: 2rem;
-  max-width: 300px;
+  max-width: 500px;
   display: flex;
   align-items: center;
-  height: 200px;
+  height: 100vh;
   margin: auto;
-  margin-top: 30vh;
+  margin-top: 0;
   font-size: 20px;
   background-color: #f8f8f8;
   filter: drop-shadow(0 0 1px black);
@@ -24,10 +31,30 @@
   z-index: -1;
 }
 
+.containerNoBorder{
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 0;
+  font-size: 20px;
+  background-color: #f8f8f8;
+  filter: drop-shadow(0 0 0 white);
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  .container{
+    margin-top: 10vh;
+    height: 750px;
+  }
+}
+
+
 .closeModal{
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  right: 0.5rem;
+  top: 0.5rem;
 }
 
 .closeButton{

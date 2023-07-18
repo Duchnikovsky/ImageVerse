@@ -48,13 +48,23 @@ model User {
   Comment       Comment[]
   CommentVote   CommentVote[]
   Vote          Vote[]
+  followers     Following[]   @relation("UserFollowers")
+  followedBy    Following[]   @relation("UserFollowedBy")
 
   @@index([name])
 }
 
+model Following {
+  id         String @id @default(cuid())
+  follower   User   @relation("UserFollowers", fields: [followerId], references: [id])
+  followerId String
+  followed   User   @relation("UserFollowedBy", fields: [followedId], references: [id])
+  followedId String
+}
+
 model Post {
   id          String   @id @default(cuid())
-  content     Json?
+  image       String
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
