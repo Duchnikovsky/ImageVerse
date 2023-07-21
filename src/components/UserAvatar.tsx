@@ -4,14 +4,14 @@ import React from "react";
 import * as Avatar from '@radix-ui/react-avatar';
 import CSS from '@/styles/avatar.module.css';
 import { Icons } from "./Icons";
-import { AvatarProps } from "@radix-ui/react-avatar";
 
-interface UserAvatarProps extends AvatarProps{
-  user: Pick<User, "name" | "image">;
+interface UserAvatarProps{
+  user: Pick<User, "name" | "image">,
+  style: string,
 }
 
-export default function UserAvatar({ user }: UserAvatarProps) {
-  return <Avatar.Root className={CSS.AvatarRoot}>
+export default function UserAvatar({ user, style }: UserAvatarProps) {
+  return <Avatar.Root className={style === 'large' ? CSS.AvatarRootLarge : (style === 'small' ? CSS.AvatarRootSmall : CSS.AvatarRoot)}>
     {user.image ? (
       <Avatar.Image
       className={CSS.AvatarImage}

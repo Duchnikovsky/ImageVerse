@@ -16,10 +16,10 @@ export default function PostFeed() {
   })
   const { data: session } = useSession()
 
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+  const { data, fetchNextPage } = useInfiniteQuery(
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
-      const query = `/api/posts?limit=2&page=${pageParam}`;
+      const query = `/api/posts/main?limit=2&page=${pageParam}`;
 
       const { data } = await axios.get(query);
       return data as ExtendedPost[];

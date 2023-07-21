@@ -1,0 +1,45 @@
+.main {
+  width: 100%;
+  border-radius: 3px;
+  margin: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.imageArea {
+  position: relative;
+  width: 100%;
+  padding-top: 110%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  filter: drop-shadow(1px 1px 2px #2d2d2d);
+}
+
+.hoverDiv{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(45, 45, 45, 0.5);
+  gap: 0.5rem;
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto';
+  font-weight: 600;
+  display: none;
+}
+
+.imageArea:hover .hoverDiv{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

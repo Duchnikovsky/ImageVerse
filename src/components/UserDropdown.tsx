@@ -7,7 +7,7 @@ import Link from "next/link";
 import { signOut } from "next-auth/react";
 
 interface UserDropdownProps {
-  user: Pick<User, "name" | "image" | "email">;
+  user: Pick<User, "id" | "name" | "image" | "email">;
 }
 
 export default function UserDropdown({ user }: UserDropdownProps) {
@@ -19,6 +19,7 @@ export default function UserDropdown({ user }: UserDropdownProps) {
             name: user.name || null,
             image: user.image || null,
           }}
+          style='medium'
         />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className={CSS.DropdownMenuContent} align="center">
@@ -29,6 +30,9 @@ export default function UserDropdown({ user }: UserDropdownProps) {
           </div>
         </div>
         <DropdownMenu.Separator className={CSS.DropdownMenuSeparator} />
+        <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
+          <Link href={`/profile/${user.id}`}>My profile</Link>
+        </DropdownMenu.Item>
         <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
           <Link href="/">Feed</Link>
         </DropdownMenu.Item>
