@@ -9,7 +9,7 @@ export default function SignInDropdown() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className={DropDownCSS.trigger}>
-        <UserAvatar user={{}} />
+        <UserAvatar user={{}} style={'medium'} />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
         className={DropDownCSS.DropdownMenuContent}

@@ -26,5 +26,3 @@ export default function UserAvatar({ user, style }: UserAvatarProps) {
     )}
   </Avatar.Root>;
 }
-
-{/* <Link href="/signIn"></Link> */}

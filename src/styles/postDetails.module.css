@@ -1,0 +1,179 @@
+.main {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80vh;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.imageArea {
+  position: relative;
+  width: 60%;
+  padding-top: 66%;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  box-sizing: border-box;
+  filter: drop-shadow(1px 1px 2px #2d2d2d);
+}
+
+.dataArea{
+  width: 40%;
+  height: 617px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f2f2f2;
+  filter: drop-shadow(1px 1px 2px #2d2d2d);
+}
+
+.comment{
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.commentText{
+  width: 80%;
+  height: auto;
+  font-size: 14px;
+  overflow-wrap: break-word; 
+}
+
+.commentsArea{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.hr{
+  width: 100%;
+  margin-left: 2%;
+}
+
+.hr2{
+  width: 95%;
+}
+
+.commentsArea::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.commentsArea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.commentsArea::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.creatorArea{
+  width: 100%;
+  height: 20%;
+}
+
+.creator{
+  width: 90%;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+
+.creatorUpper{
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.creatorLower{
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.textarea{
+  width: 85%;
+  height: 4rem;
+  resize: none;
+  outline: none;
+  border: 0;
+  background-color: #f2f2f2;
+  filter: drop-shadow(0 0 1px black);
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+
+.textarea::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+.textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+@media (max-width: 768px){
+  .main{
+    width: 100%;
+    padding: 0;
+    align-items: flex-start;
+    padding-top: 1rem;
+    flex-direction: column;
+    height: 110vh;
+  }
+  .imageArea{
+    width: 100%;
+    padding-top: 110%;
+  }
+  .dataArea{
+    width: 100%;
+    height: 100%;
+  }
+  .creatorArea{
+    width: 100%;
+    height: 25%;
+  }
+  .commentsArea{
+    width: 100%;
+    height: 75%;
+  }
+}
+
+
+.loader{
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

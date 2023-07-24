@@ -4,14 +4,14 @@ import CSS from "@/styles/feed.module.css";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ProfilePost from "./ProfilePost";
-import Button from "../Button";
+import { Button } from "../Button";
 
 interface ProfileFeedProps {
   userId: string;
 }
 
 export default function ProfileFeed({ userId }: ProfileFeedProps) {
-  const { data, fetchNextPage } = useInfiniteQuery(
+  const { data, fetchNextPage, isFetching } = useInfiniteQuery(
     ["infinite-query"],
     async ({ pageParam = 1 }) => {
       const query = `/api/posts/profile?limit=6&page=${pageParam}&user=${userId}`;
@@ -44,7 +44,7 @@ export default function ProfileFeed({ userId }: ProfileFeedProps) {
         })}
       </div>
       <div className={CSS.loadPosts} onClick={() => fetchNextPage()}>
-        <Button width={150} height={30} text="LOAD MORE" isDisabled={false} isLoading={false}/>
+        <Button width="150px" height="30px" isDisabled={false} isLoading={isFetching} fontSize="18px">Load more</Button>
       </div>
     </div>
   );

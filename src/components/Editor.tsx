@@ -4,11 +4,11 @@ import { FormEvent, useRef, useState } from "react";
 import Image from "next/image";
 import { uploadFiles } from "@/lib/uploadthing";
 import { LucideUpload } from "lucide-react";
-import Button from "@/components/Button";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
+import { Button } from "./Button";
 
 const PostValidator = z.object({
   image: z.string(),
@@ -138,13 +138,14 @@ export default function Editor({ modal }: EditorProps) {
         </div>
         <div style={{ textAlign: "center", marginTop: "15px" }}>
           <Button
-            width={200}
-            height={40}
-            text="Post"
+            width="200px"
+            height="40px"
             isDisabled={!(image && description.length > 3)}
             isLoading={isLoading}
-            type={"submit"}
-          ></Button>
+            fontSize="18px"
+          >
+            Post
+          </Button>
         </div>
       </form>
     </div>

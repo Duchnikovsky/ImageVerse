@@ -85,8 +85,7 @@
 .DropdownMenuCheckboxItem[data-highlighted],
 .DropdownMenuRadioItem[data-highlighted],
 .DropdownMenuSubTrigger[data-highlighted] {
-  background-color: #1a1a0c;
-  color: white;
+  background-color: white;
 }
 
 .DropdownMenuLabel {

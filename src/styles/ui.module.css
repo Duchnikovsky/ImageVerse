@@ -2,12 +2,15 @@
   border: 0;
   outline: none;
   border-radius: 5px;
-  font-size: 20px;
   background-color: #1a1a1a;
   color: white;
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .button:not(:disabled):hover{
@@ -24,7 +27,6 @@
   background-color: #646464;
 }
 
-
 .loader{
   animation: spin 1s linear infinite;
 }
@@ -35,11 +37,5 @@
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media(max-width: 768px){
-  .button{
-    margin: auto;
   }
 }
