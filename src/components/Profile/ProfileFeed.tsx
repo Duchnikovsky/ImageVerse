@@ -12,7 +12,7 @@ interface ProfileFeedProps {
 
 export default function ProfileFeed({ userId }: ProfileFeedProps) {
   const { data, fetchNextPage, isFetching } = useInfiniteQuery(
-    ["infinite-query"],
+    ["infinite-profile-query"],
     async ({ pageParam = 1 }) => {
       const query = `/api/posts/profile?limit=6&page=${pageParam}&user=${userId}`;
 

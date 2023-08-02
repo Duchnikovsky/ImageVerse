@@ -4,9 +4,10 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgb(50, 50, 50, 0.3);
+  background-color: rgb(20, 20,20, 0.5);
   overflow-y: hidden;
   backdrop-filter: blur(3px);
+  z-index: 11;
 }
 
 .container{
@@ -18,8 +19,8 @@
   margin: auto;
   margin-top: 30vh;
   font-size: 20px;
-  background-color: #f8f8f8;
-  filter: drop-shadow(0 0 1px black);
+  background-color: #0e0f12;
+  filter: drop-shadow(0 0 1px #c4c6c8);
   border-radius: 10px;
   z-index: -1;
 }
@@ -33,8 +34,8 @@
 .closeButton{
   width: 25px;
   height: 25px;
-  border: 1px solid #d9d9d9;
-  background-color: #dfdfdf;
+  filter: drop-shadow(0 0 1px #c4c6c8);
+  background-color: #0e0f12;
   text-align: center;
   line-height: 22px;
   border-radius: 5px;

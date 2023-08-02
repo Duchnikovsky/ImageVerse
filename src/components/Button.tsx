@@ -8,17 +8,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   width: string;
   height: string;
   fontSize: string;
+  margin?: string | 0
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { children, isLoading, isDisabled, width, height, fontSize, ...props },
+    { children, isLoading, isDisabled, width, height, fontSize, margin, ...props },
     ref
   ) => {
     return (
       <button
         className={CSS.button}
-        style={{ width: width, height: height, fontSize: fontSize }}
+        style={{ width: width, height: height, fontSize: fontSize, margin: margin }}
         ref={ref}
         disabled={isDisabled}
         {...props}

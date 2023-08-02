@@ -2,8 +2,8 @@
   border: 0;
   outline: none;
   border-radius: 5px;
-  background-color: #1a1a1a;
-  color: white;
+  background-color: #0e0f12;
+  color: #c4c6c8;
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  filter: drop-shadow(0px 0px 1px #c4c6c8);
 }
 
 .button:not(:disabled):hover{
@@ -18,13 +19,14 @@
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
-  background-color: white;
-  color: #1a1a1a;
-  border: 1px solid #1a1a1a;
+  color: white;
+  background-color: #04050a;
+  filter: drop-shadow(0px 0px 1px #c4c6c8);
 }
 
 .button:disabled{
-  background-color: #646464;
+  color: #c4c6c8;
+  background-color: #242427;
 }
 
 .loader{

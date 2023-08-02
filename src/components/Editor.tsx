@@ -82,8 +82,70 @@ export default function Editor({ modal }: EditorProps) {
   }
 
   return (
-    <div className={CSS.editorBox}>
-      <form
+    <form id="newpost-form" onSubmit={submitHandler} className={CSS.form}>
+      <div className={CSS.fileInput} onClick={handleImageClick}>
+        {image ? (
+          <Image
+            alt="image"
+            src={URL.createObjectURL(image)}
+            fill
+            className={CSS.image}
+          ></Image>
+        ) : (
+          <div className={CSS.uploadLayout}>
+            {<LucideUpload size={64} />}
+            <div style={{ textAlign: "center" }}>
+              Upload image from your device
+            </div>
+            <div className={CSS.imageInfo}>
+              The image will automatically be stretched to the size of the
+              window with an aspect ratio of 9:10<br></br>
+              <br></br>
+              <i>
+                Acceptable file types are <b>PNG</b>, <b>JPG</b> and <b>JPEG</b>
+              </i>
+            </div>
+          </div>
+        )}
+        <input
+          type="file"
+          ref={inputRef}
+          onChange={handleImageChange}
+          style={{ display: "none" }}
+          accept=".png, .jpg, .jpeg"
+        />
+      </div>
+      <div className={CSS.textarea}>
+        <textarea
+          className={CSS.description}
+          placeholder="Description"
+          maxLength={300}
+          value={description}
+          onChange={(e) => {
+            setDescription(e.target.value);
+          }}
+          spellCheck="false"
+        ></textarea>
+        <div className={CSS.characterLimit}>
+          {description.length}/<span className={CSS.gray}>300</span>
+        </div>
+      </div>
+      <Button
+        width="40%"
+        height="2.5rem"
+        isDisabled={!(image && description.length > 3)}
+        isLoading={isLoading}
+        fontSize="20px"
+        margin={"auto"}
+      >
+        Post
+      </Button>
+    </form>
+  );
+}
+
+{
+  /* <form
         id="newpost-form"
         onSubmit={submitHandler}
         style={{ width: "100%" }}
@@ -138,16 +200,15 @@ export default function Editor({ modal }: EditorProps) {
         </div>
         <div style={{ textAlign: "center", marginTop: "15px" }}>
           <Button
-            width="200px"
-            height="40px"
+            width="40%"
+            height="2.5rem"
             isDisabled={!(image && description.length > 3)}
             isLoading={isLoading}
-            fontSize="18px"
+            fontSize="20px"
+            margin={'auto'}
           >
             Post
           </Button>
         </div>
-      </form>
-    </div>
-  );
+      </form> */
 }

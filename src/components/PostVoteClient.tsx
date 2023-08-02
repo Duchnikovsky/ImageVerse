@@ -1,10 +1,10 @@
 "use client";
 
 import { usePrevious } from "@mantine/hooks";
-import { VoteType } from "@prisma/client";
+import { Favorite, VoteType } from "@prisma/client";
 import { useEffect, useState } from "react";
 import CSS from "@/styles/votes.module.css";
-import { Heart, HeartCrack } from "lucide-react";
+import { Heart, Star } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { PostVoteRequest } from "@/lib/validators/vote";
 import axios, { AxiosError } from "axios";
@@ -13,20 +13,29 @@ interface PostVoteClientProps {
   postId: string;
   initialVotesAmount: number;
   initialVote?: VoteType | null;
+  initialFavorite: Pick<Favorite, 'userId'> | undefined
 }
 
 export default function PostVoteClient({
   postId,
   initialVotesAmount,
   initialVote,
+  initialFavorite,
 }: PostVoteClientProps) {
   const [votesAmount, setVotesAmount] = useState<number>(initialVotesAmount);
   const [currentVote, setCurrentVote] = useState(initialVote);
+  const [isFavorite, setFavorite] = useState<boolean>(false);
   const previousVote = usePrevious(currentVote);
 
   useEffect(() => {
     setCurrentVote(initialVote);
   }, [initialVote]);
+
+  useEffect(() => {
+    if(initialFavorite){
+      setFavorite(true)
+    }
+  }, [initialFavorite]);
 
   const { mutate: vote } = useMutation({
     mutationFn: async (type: VoteType) => {
@@ -65,24 +74,50 @@ export default function PostVoteClient({
     },
   });
 
+  const { mutate: favorite } = useMutation({
+    mutationFn: async () => {
+      const payload = {
+        postId: postId,
+      };
+
+      await axios.patch("/api/post/favorite", payload);
+    },
+    onError: (err) => {
+      setFavorite(!isFavorite)
+
+      if (err instanceof AxiosError) {
+        if (err.response?.status === 401) {
+          return; //TOAST
+        }
+      }
+
+      return; //TOAST
+    },
+    onMutate: () => {
+      setFavorite(!isFavorite)
+    },
+  });
+
   return (
     <div className={CSS.main}>
-      <Heart
-        fill={currentVote === "UP" ? "#b00037" : "white"}
-        className={CSS.heart}
-        stroke="#b00037"
+      <div className={CSS.votes}>
+        <Heart
+          fill={currentVote === "UP" ? "#b00037" : "transparent"}
+          className={CSS.heart}
+          stroke="white"
+          strokeWidth={"1.25px"}
+          size={24}
+          onClick={() => vote("UP")}
+        />
+        Upvotes count: {votesAmount}
+      </div>
+      <Star
+        fill={isFavorite ? "#e0c21b" : "transparent"}
+        className={CSS.star}
+        stroke="white"
         strokeWidth={"1.25px"}
-        size={30}
-        onClick={() => vote("UP")}
-      />
-      <b>{votesAmount}</b>
-      <HeartCrack
-        fill={currentVote === "DOWN" ? "#1a1a1a" : "white"}
-        stroke="#2d2d2d"
-        strokeWidth={"1.25px"}
-        className={CSS.crackHeart}
-        size={30}
-        onClick={() => vote("DOWN")}
+        size={24}
+        onClick={() => favorite()}
       />
     </div>
   );

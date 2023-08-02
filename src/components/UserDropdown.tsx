@@ -37,6 +37,9 @@ export default function UserDropdown({ user }: UserDropdownProps) {
           <Link href="/">Feed</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
+          <Link href="/favorites">Favorites</Link>
+        </DropdownMenu.Item>
+        <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
           <Link href="/settings">Settings</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Separator className={CSS.DropdownMenuSeparator} />

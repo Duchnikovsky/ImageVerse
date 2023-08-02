@@ -1,9 +1,19 @@
 .main{
   width: 100%;
-  gap: 2rem;
   display: flex;
-  padding: 0.5rem 0;
-  justify-content: center;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 500;
+  align-items: center;
+  box-sizing: border-box;
+  text-shadow: 5px #1a1a1a;
+  padding: 0 0.5rem;
+}
+
+.votes{
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .heart{
@@ -20,19 +30,17 @@
   cursor: pointer;
 }
 
-
-.crackHeart{
+.star{
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
-  stroke: #2d2d2d;
 }
 
-.crackHeart:hover{
+.star:hover{
   transition-property: all;
   transition-duration: 200ms;
   transition-timing-function: linear;
-  fill: #1a1a1a;
+  fill: #e0c21b;
+  stroke: #e0c21b;
   cursor: pointer;
-  stroke: white;
 }

@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 import CSS from "@/styles/auth.module.css";
 import { Icons } from "@/components/Icons";
 import { signIn } from "next-auth/react";
-import { Loader2 } from "lucide-react";
+import { Button } from "./Button";
 
 interface SignInButtonProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -15,20 +15,23 @@ const SignInButton: FC<SignInButtonProps> = () => {
     try {
       await signIn("google");
     } catch (error) {
-      
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <button className={CSS.button} disabled={loading} onClick={login}>
-      {loading ? (
-        <Loader2 className={CSS.loader} />
-      ) : (
-        <Icons.google className={CSS.google} />
-      )}
-    </button>
+    <Button
+      width={"95%"}
+      height={"2.5rem"}
+      isLoading={loading}
+      isDisabled={false}
+      fontSize={"20px"}
+      margin={'auto'}
+      onClick={() => login()}
+    >
+      <Icons.google className={CSS.google} />
+    </Button>
   );
 };
 

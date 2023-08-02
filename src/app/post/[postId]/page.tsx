@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import CSS from "@/styles/postDetails.module.css";
 import Image from "next/image";
 import UserAvatar from "@/components/UserAvatar";
-import { Loader2, Pen } from "lucide-react";
+import { AlertCircle, Loader2, Pen } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 import CommentSection from "@/components/Comment/CommentSection";
@@ -55,7 +55,11 @@ export default async function page({ params }: pageProps) {
             </div>
           </div>
           <hr className={CSS.hr}></hr>
-          <Suspense fallback={<Loader2 className={CSS.loader} />}>
+          <Suspense
+            fallback={
+              <Loader2 className={CSS.loader} style={{ margin: "auto" }} />
+            }
+          >
             <CommentSection postId={post.id} />
           </Suspense>
         </div>
@@ -70,7 +74,10 @@ export default async function page({ params }: pageProps) {
               />
             </div>
           ) : (
-            <></>
+            <div className={CSS.notAuthorized}>
+              <div>You must sign in to comment</div>
+              <AlertCircle size={32}/>
+            </div>
           )}
         </div>
       </div>

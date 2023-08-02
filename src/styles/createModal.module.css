@@ -4,7 +4,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgb(50, 50, 50, 0.3);
+  background-color: rgb(20, 20,20, 0.5);
   overflow-y: hidden;
   backdrop-filter: blur(3px);
   z-index: 11;
@@ -19,37 +19,29 @@
 
 .container{
   max-width: 500px;
-  display: flex;
-  align-items: center;
-  height: 100vh;
-  margin: auto;
-  margin-top: 0;
-  font-size: 20px;
-  background-color: #f8f8f8;
-  filter: drop-shadow(0 0 1px black);
+  margin: 10vh auto 0 auto;
+  height: 770px;
+  background-color: #0e0f12;
+  filter: drop-shadow(0 0 1px #c4c6c8);
   border-radius: 10px;
   z-index: -1;
 }
 
 .containerNoBorder{
   max-width: 500px;
-  display: flex;
-  align-items: center;
-  margin: auto;
-  margin-top: 0;
-  font-size: 20px;
-  background-color: #f8f8f8;
-  filter: drop-shadow(0 0 0 white);
+  margin: 5vh auto 0 auto;
   border-radius: 10px;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .container{
-    margin-top: 10vh;
-    height: 750px;
+    height: 100vh;
+    margin: 0;
+  }
+  .containerNoBorder{
+    margin-top: 5vh;
   }
 }
-
 
 .closeModal{
   position: absolute;

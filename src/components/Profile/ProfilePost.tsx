@@ -22,11 +22,13 @@ export default function ProfilePost({ post, votesAmount }: ProfilePostProps) {
           src={post.image}
           fill={true}
           className={CSS.image}
-          loading="lazy"
+          placeholder="empty"
+          priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         ></Image>
         <div className={CSS.hoverDiv}>
-          <Heart stroke="#e8e8e8" fill="white"/>{votesAmount}
+          <Heart stroke="#e8e8e8" fill="white" />
+          {votesAmount}
         </div>
       </Link>
     </div>

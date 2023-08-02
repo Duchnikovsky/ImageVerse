@@ -14,8 +14,8 @@
   margin: auto;
   margin-top: 30vh;
   font-size: 20px;
-  background-color: #f8f8f8;
-  filter: drop-shadow(0 0 1px black);
+  background-color: #0e0f12;
+  filter: drop-shadow(0px 0px 2px #c4c6c8);
   border-radius: 10px;
   z-index: 11;
   overflow-y: hidden;
@@ -27,34 +27,6 @@
   flex-direction: column;
 }
 
-.button{
-  width: 300px;
-  height: 40px;
-  margin: auto;
-  border-radius: 5px;
-  outline: none;
-  border: 0;
-  background-color: #1a1a1a;
-  color: white;
-  margin-top: 30px;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition-property: all;
-  transition-duration: 200ms;
-  transition-timing-function: linear;
-}
-
-.button:hover{
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid black;
-  transition-property: all;
-  transition-duration: 200ms;
-  transition-timing-function: linear;
-}
-
 .logo{
   width: 64px;
   height: 64px;
@@ -62,24 +34,11 @@
 
 .privacy{
   font-size: 12px;
-  color: #4e4e4e;
+  color: #c4c6c8;
+  margin: 1rem 0 1.75rem 0;
 }
 
 .google{
   width: 24px;
   height: 24px;
-}
-
-.loader{
-  color: black;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

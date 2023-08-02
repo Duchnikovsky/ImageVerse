@@ -39,12 +39,37 @@
   align-items: center;
 }
 
+.loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin: 1rem 10rem 0 0;
+  color: white;
+}
+
+.loader{
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin{
+  from{
+    rotate: 0deg;
+  }
+  to{
+    rotate: 360deg;
+  }
+}
+
 @media(max-width: 768px){
   .postsGrid{
     width: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 2rem;
+    row-gap: 0.25rem;
     column-gap: 0.5rem;
+    margin: 0;
+  }
+  .loading{
     margin: 0;
   }
 }

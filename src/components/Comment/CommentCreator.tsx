@@ -66,7 +66,6 @@ export default function CommentCreator({
         >
           Post
         </Button>
-        {/* <button className={CSS.button}>POST</button> */}
       </div>
     </div>
   );

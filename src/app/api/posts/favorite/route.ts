@@ -3,23 +3,15 @@ import { db } from "@/lib/db";
 import { z } from "zod";
 
 export async function GET(req: Request) {
-  const url = new URL(req.url);
-
   const session = await getAuthSession();
 
-  let followedUsersId: string[] = [];
-
-  if (session) {
-    const followedUsers = await db.following.findMany({
-      where: {
-        followerId: session.user.id,
-      },
-    });
-
-    followedUsersId = followedUsers.map((follow) => follow.followedId);
-  }
+  const url = new URL(req.url);
 
   try {
+    if (!session) {
+      return new Response("unauthorized", { status: 401 });
+    }
+
     const { limit, page } = z
       .object({
         limit: z.string(),
@@ -30,15 +22,15 @@ export async function GET(req: Request) {
         page: url.searchParams.get("page"),
       });
 
-    let whereClause = {};
+    let favorizedPostsId: string[] = [];
 
-    if (session) {
-      whereClause = {
-        authorId: {
-          in: followedUsersId,
-        },
-      };
-    }
+    const favorizedPosts = await db.favorite.findMany({
+      where: {
+        userId: session.user.id,
+      },
+    });
+
+    favorizedPostsId = favorizedPosts.map((favorite) => favorite.postId);
 
     const posts = await db.post.findMany({
       take: parseInt(limit),
@@ -48,23 +40,23 @@ export async function GET(req: Request) {
       },
       include: {
         author: true,
-        comments: {
-          take: 3,
-          orderBy: {
-            createdAt: 'desc',
-          },
-          include: {
-            author: true,
-          }
-        },
         votes: true,
-        favorite: true,
       },
-      where: whereClause,
+      where: {
+        id: {
+          in: favorizedPostsId,
+        },
+      },
     });
 
     return new Response(JSON.stringify(posts));
   } catch (error) {
-    return new Response("Could not fetch posts", { status: 500 });
+    if (error instanceof z.ZodError) {
+      return new Response("Invalid data", { status: 422 });
+    }
+
+    return new Response("Could not fetch posts, try again later", {
+      status: 500,
+    });
   }
 }
