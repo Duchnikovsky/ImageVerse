@@ -40,6 +40,10 @@ export async function PATCH(req: Request) {
       return new Response("Post not found", { status: 404 });
     }
 
+    if (session.user.id === post.authorId){
+      return new Response("You can't vote your own posts", {status: 411})
+    }
+
     if (existingVote) {
       if (existingVote.type === voteType) {
         await db.vote.delete({

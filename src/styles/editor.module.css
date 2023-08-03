@@ -66,10 +66,10 @@
   box-sizing: border-box;
   text-align: justify;
   margin-top: 1rem;
+  font-family: inherit;
 }
 
 .description::placeholder {
-  font-weight: bold;
   color: rgb(220, 220, 220, 0.8);
 }
 

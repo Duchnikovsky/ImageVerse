@@ -20,24 +20,26 @@ export default function UserData({
   followed,
   following,
 }: UserDataProps) {
-
-
-
   return (
     <div className={CSS.userData}>
-      <div className={CSS.userAvatar}>
-        <UserAvatar user={user} style="large" />
+      <UserAvatar user={user} style="large" />
+      <div className={CSS.name}>{user.name}</div>
+      <div className={CSS.statistics}>
+        <div className={CSS.statistic}>
+          <div>Followers</div>
+          {followers}
+        </div>
+        <div className={CSS.statistic}>
+          <div>Posts</div>
+          {postsCount}
+        </div>
+        <div className={CSS.statistic}>
+          <div>Following</div>
+          {followed}
+        </div>
       </div>
-      <div className={CSS.informations}>
-        <div className={CSS.data}>
-          <div className={CSS.name}>{user.name}</div>
-          <FollowButton isFollowing={following} userId={user.id}/>
-        </div>
-        <div className={CSS.statistics}>
-          <div>Posts: {postsCount}</div>
-          <div>Followers: {followers}</div>
-          <div>Following: {followed}</div>
-        </div>
+      <div className={CSS.buttonArea}>
+        <FollowButton isFollowing={following} userId={user.id} />
       </div>
     </div>
   );

@@ -19,6 +19,10 @@ export async function POST(req: Request) {
         userId: body.userId,
       });
 
+    if (userId === session.user.id) {
+      return new Response("You can't follow yourself", { status: 411 });
+    }
+
     const isFollowed = await db.following.findFirst({
       where: {
         followedId: userId,

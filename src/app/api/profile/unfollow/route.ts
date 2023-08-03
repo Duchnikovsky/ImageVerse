@@ -19,6 +19,10 @@ export async function POST(req: Request) {
         userId: body.userId,
       });
 
+    if (userId === session.user.id) {
+      return new Response("This operation is not allowed", { status: 411 });
+    }
+
     const isFollowed = await db.following.findFirst({
       where: {
         followedId: userId,
@@ -35,9 +39,9 @@ export async function POST(req: Request) {
     await db.following.deleteMany({
       where: {
         followedId: userId,
-        followerId: session.user.id
-      }
-    })
+        followerId: session.user.id,
+      },
+    });
 
     return new Response(userId);
   } catch (error) {

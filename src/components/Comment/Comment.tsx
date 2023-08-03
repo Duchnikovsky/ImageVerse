@@ -4,6 +4,7 @@ import { Comment, CommentVote, User } from "@prisma/client";
 import { useRef } from "react";
 import UserAvatar from "../UserAvatar";
 import Link from "next/link";
+import { formatTimeToNow } from "@/lib/utilities";
 
 type ExtendedCommand = Comment & {
   votes: CommentVote[];
@@ -21,9 +22,15 @@ export default function Comment({ comment }: CommentProps) {
     <div className={CSS.comment} ref={commentRef}>
       <UserAvatar user={comment.author} style={"small"} />
       <div className={CSS.commentText}>
-        <Link href={`/profile/${comment.author.id}`}>
-          <b style={{ color: "#1d1d1d" }}>{comment.author.name} </b>
-        </Link>{" "}
+        <div>
+          <Link href={`/profile/${comment.author.id}`}>
+            <b>{comment.author.name} </b>
+          </Link>{" "}
+          <b>•</b>{" "}
+          <span className={CSS.date}>
+            {formatTimeToNow(new Date(comment.createdAt))}
+          </span>
+        </div>
         {comment.text}
       </div>
     </div>

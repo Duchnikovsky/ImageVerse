@@ -1,7 +1,7 @@
 "use client";
 import { formatTimeToNow } from "@/lib/utilities";
 import CSS from "@/styles/post.module.css";
-import { Comment, Favorite, Post, User, Vote } from "@prisma/client";
+import { Favorite, Post, User, Vote } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import TextareaAutosize from "react-textarea-autosize";
@@ -75,7 +75,7 @@ export default function Post({ post, votesAmount, currentVote, currentFavorite }
           </span>
         </div>
       </div>
-      <div className={CSS.imageArea}>
+      <Link href={`/post/${post.id}`} className={CSS.imageArea}>
         <Image
           alt="image"
           src={post.image}
@@ -85,7 +85,7 @@ export default function Post({ post, votesAmount, currentVote, currentFavorite }
           priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         ></Image>
-      </div>
+      </Link>
       <div className={CSS.voteArea}>
         <PostVoteClient
           postId={post.id}

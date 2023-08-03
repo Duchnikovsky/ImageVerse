@@ -5,6 +5,7 @@ import axios, { AxiosError } from "axios";
 import { startTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { Button } from "@/components/Button";
 
 interface FollowButtonProps {
   isFollowing: boolean;
@@ -72,8 +73,28 @@ export default function FollowButton({
   });
 
   return isFollowing ? (
-    <button className={CSS.button} onClick={() => unfollow()}>{isUnfollowLoading ? <Loader2 className={CSS.loader}/> : 'Unfollow'}</button>
+    <Button
+      width="90%"
+      height="2rem"
+      isLoading={isUnfollowLoading}
+      fontSize="18px"
+      isDisabled={false}
+      margin={"auto"}
+      onClick={() => unfollow()}
+    >
+      Unfollow
+    </Button>
   ) : (
-    <button className={CSS.button} onClick={() => follow()}>{isFollowLoading ? <Loader2 className={CSS.loader}/> : 'Follow'}</button>
+    <Button
+      width="90%"
+      height="2rem"
+      isLoading={isFollowLoading}
+      fontSize="18px"
+      isDisabled={false}
+      margin={"auto"}
+      onClick={() => follow()}
+    >
+      Follow
+    </Button>
   );
 }

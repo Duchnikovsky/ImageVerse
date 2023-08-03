@@ -5,14 +5,15 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ProfilePost from "./ProfilePost";
 import { Button } from "../Button";
+import { AlertCircle } from "lucide-react";
 
 interface ProfileFeedProps {
   userId: string;
 }
 
 export default function ProfileFeed({ userId }: ProfileFeedProps) {
-  const { data, fetchNextPage, isFetching } = useInfiniteQuery(
-    ["infinite-profile-query"],
+  const { data, fetchNextPage, isFetching, isFetched } = useInfiniteQuery(
+    [`infinite-profile${userId}-query`],
     async ({ pageParam = 1 }) => {
       const query = `/api/posts/profile?limit=6&page=${pageParam}&user=${userId}`;
 
@@ -31,6 +32,11 @@ export default function ProfileFeed({ userId }: ProfileFeedProps) {
 
   return (
     <div className={CSS.main}>
+      {isFetched && posts.length < 1 && (
+        <div className={CSS.noPosts}>
+          <AlertCircle size={64} /> This user haven't posted any photos yet
+        </div>
+      )}
       <div className={CSS.postsGrid}>
         {posts.map((post, index) => {
           const votesAmount = post.votes.reduce((acc, vote) => {
@@ -43,9 +49,19 @@ export default function ProfileFeed({ userId }: ProfileFeedProps) {
           );
         })}
       </div>
-      <div className={CSS.loadPosts} onClick={() => fetchNextPage()}>
-        <Button width="150px" height="30px" isDisabled={false} isLoading={isFetching} fontSize="18px">Load more</Button>
-      </div>
+      {(isFetched && posts.length < 1) || (
+        <div className={CSS.loadPosts} onClick={() => fetchNextPage()}>
+          <Button
+            width="150px"
+            height="30px"
+            isDisabled={false}
+            isLoading={isFetching}
+            fontSize="18px"
+          >
+            Load more
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

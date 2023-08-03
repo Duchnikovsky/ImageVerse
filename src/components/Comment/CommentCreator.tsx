@@ -53,15 +53,16 @@ export default function CommentCreator({
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add your comment"
           spellCheck={false}
+          maxLength={100}
         ></textarea>
       </div>
       <div className={CSS.creatorLower}>
         <Button
           width="30%"
-          height="2rem"
+          height="1.75rem"
           fontSize="16px"
           isLoading={isLoading}
-          isDisabled={!(input.length > 2)}
+          isDisabled={!(input.length > 2 && input.length < 101)}
           onClick={() => comment({postId: postId, commentValue: input})}
         >
           Post

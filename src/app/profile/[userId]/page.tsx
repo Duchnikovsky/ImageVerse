@@ -64,7 +64,6 @@ export default async function page({ params }: pageProps) {
         followed={followed}
         following={isFollowing}
       />
-      <hr className={CSS.hr}></hr>
       <ProfileFeed userId={userId} />
     </div>
   );
