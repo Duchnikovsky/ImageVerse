@@ -32,10 +32,34 @@ export async function GET(req: Request) {
 
     let whereClause = {};
 
+    let orderBy = {};
+
     if (session) {
-      whereClause = {
-        authorId: {
-          in: followedUsersId,
+      if (followedUsersId.length === 0) {
+        whereClause = {
+          NOT: {
+            authorId: session?.user.id,
+          },
+        };
+        orderBy = {
+          votes: {
+            _count: "desc",
+          },
+        };
+      } else {
+        whereClause = {
+          authorId: {
+            in: followedUsersId,
+          },
+        };
+        orderBy = {
+          createdAt: "desc",
+        };
+      }
+    } else {
+      orderBy = {
+        votes: {
+          _count: "desc",
         },
       };
     }
@@ -43,19 +67,22 @@ export async function GET(req: Request) {
     const posts = await db.post.findMany({
       take: parseInt(limit),
       skip: (parseInt(page) - 1) * parseInt(limit),
-      orderBy: {
-        createdAt: "desc",
-      },
+      orderBy: [
+        orderBy,
+        {
+          createdAt: "desc",
+        },
+      ],
       include: {
         author: true,
         comments: {
           take: 3,
           orderBy: {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
           include: {
             author: true,
-          }
+          },
         },
         votes: true,
         favorite: true,
@@ -63,7 +90,46 @@ export async function GET(req: Request) {
       where: whereClause,
     });
 
-    return new Response(JSON.stringify(posts));
+    const postsCount = await db.post.count({
+      where: whereClause,
+    });
+
+    if (postsCount === 0 && followedUsersId.length > 0) {
+      const proposedPosts = await db.post.findMany({
+        take: parseInt(limit),
+        skip: (parseInt(page) - 1) * parseInt(limit),
+        orderBy: [
+          orderBy,
+          {
+            createdAt: "desc",
+          },
+        ],
+        include: {
+          author: true,
+          comments: {
+            take: 3,
+            orderBy: {
+              createdAt: "desc",
+            },
+            include: {
+              author: true,
+            },
+          },
+          votes: true,
+          favorite: true,
+        },
+        where: {
+          NOT: {
+            authorId: session?.user.id,
+          },
+        },
+      });
+      return new Response(
+        JSON.stringify({ posts: proposedPosts, status: "noPosts" })
+      );
+    }
+
+    return new Response(JSON.stringify({ posts: posts, status: "ok" }));
   } catch (error) {
     return new Response("Could not fetch posts", { status: 500 });
   }
