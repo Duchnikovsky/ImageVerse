@@ -47,7 +47,7 @@ export default async function CommentSection({ postId }: CommentSectionProps) {
         .map((topLevelComment) => {
           //VOTES
 
-          return <Comment comment={topLevelComment} />;
+          return <Comment comment={topLevelComment} key={topLevelComment.id}/>;
         })}
     </div>
   );

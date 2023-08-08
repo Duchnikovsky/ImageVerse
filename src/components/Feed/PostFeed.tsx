@@ -81,7 +81,7 @@ export default function PostFeed({ session, following }: PostFeedProps) {
       {status === 'noPosts' && (
         <li className={CSS.proposedPosts}>
           <div className={CSS.proposedPostsUpper}>
-            No posts from users you're following
+            No posts from users you&apos;re following
           </div>
           <div>Displaying most liked posts until something show up</div>
         </li>

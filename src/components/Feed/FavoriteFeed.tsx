@@ -39,7 +39,7 @@ export default function FavoriteFeed() {
             gap: "1rem",
           }}
         >
-          <AlertCircle size={48} /> You haven't favorized any post yet
+          <AlertCircle size={48} /> You haven&apos;t favorized any post yet
         </div>
       )}
       <div className={CSS.postsGrid}>

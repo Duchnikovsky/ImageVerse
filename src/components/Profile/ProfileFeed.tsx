@@ -34,7 +34,7 @@ export default function ProfileFeed({ userId }: ProfileFeedProps) {
     <div className={CSS.main}>
       {isFetched && posts.length < 1 && (
         <div className={CSS.noPosts}>
-          <AlertCircle size={64} /> This user haven't posted any photos yet
+          <AlertCircle size={64} /> This user haven&apos;t posted any photos yet
         </div>
       )}
       <div className={CSS.postsGrid}>
