@@ -6,6 +6,7 @@ import { startTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/Button";
+import { toast } from "react-toastify";
 
 interface FollowButtonProps {
   isFollowing: boolean;
@@ -33,17 +34,44 @@ export default function FollowButton({
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        //Toast
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
 
-      return console.log("not working"); // toast
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       startTransition(() => {
         router.refresh();
       });
 
-      return console.log("worked"); //TOAST
+      return toast.success("Successfully followed user", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
   });
 
@@ -58,17 +86,44 @@ export default function FollowButton({
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        //Toast
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
 
-      return console.log("not working"); // toast
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       startTransition(() => {
         router.refresh();
       });
 
-      return console.log("worked"); //TOAST
+      return toast.info("Successfully unfollowed user", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
   });
 

@@ -6,8 +6,9 @@ import { useState } from "react";
 import { Button } from "../Button";
 import { useMutation } from "@tanstack/react-query";
 import { CommentCreationRequest } from "@/lib/validators/comment";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 interface CommentCreatorProps {
   postId: string;
@@ -35,11 +36,43 @@ export default function CommentCreator({
       return data;
     },
     onError: (err) => {
-      //TOAST
+      if (err instanceof AxiosError) {
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       router.refresh()
       setInput('')
+      return toast.success("Successfully posted comment", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     }
   });
 

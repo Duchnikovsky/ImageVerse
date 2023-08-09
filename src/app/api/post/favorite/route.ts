@@ -17,7 +17,7 @@ export async function PATCH(req: Request) {
       });
 
     if (!session?.user) {
-      return new Response("Unauthorized", { status: 401 });
+      return new Response("You are unauthorized", { status: 401 });
     }
 
     const existingFavorite = await db.favorite.findFirst({

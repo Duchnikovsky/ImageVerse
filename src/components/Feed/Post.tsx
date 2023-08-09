@@ -12,10 +12,11 @@ import { Button } from "../Button";
 import { CommentCreationRequest } from "@/lib/validators/comment";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { CheckCircle } from "lucide-react";
 import FeedComment from "../Comment/FeedComment";
 import { ExtendedComment } from "@/types/db";
+import { toast } from "react-toastify";
 
 type PartialVote = Pick<Vote, "type">;
 
@@ -50,11 +51,43 @@ export default function Post({ post, votesAmount, currentVote, currentFavorite }
       return data;
     },
     onError: (err) => {
-      //TOAST
+      if (err instanceof AxiosError) {
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       router.refresh();
       setValue("");
+      return toast.success("Successfully posted comment", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
   });
 

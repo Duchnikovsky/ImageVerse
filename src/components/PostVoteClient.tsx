@@ -8,6 +8,7 @@ import { Heart, Star } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { PostVoteRequest } from "@/lib/validators/vote";
 import axios, { AxiosError } from "axios";
+import { toast } from "react-toastify";
 
 interface PostVoteClientProps {
   postId: string;
@@ -53,11 +54,29 @@ export default function PostVoteClient({
 
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
-          return; //TOAST
+          return toast.error(err.response?.data, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
       }
 
-      return; //TOAST
+      return toast.error('An error occured', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onMutate: (type: VoteType) => {
       if (currentVote === type) {
@@ -87,11 +106,29 @@ export default function PostVoteClient({
 
       if (err instanceof AxiosError) {
         if (err.response?.status === 401) {
-          return; //TOAST
+          return toast.error(err.response?.data, {
+            position: "bottom-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         }
       }
 
-      return; //TOAST
+      return toast.error('An error occured', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onMutate: () => {
       setFavorite(!isFavorite)

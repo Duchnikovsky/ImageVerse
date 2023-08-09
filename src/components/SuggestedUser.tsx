@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { startTransition } from "react";
+import { toast } from "react-toastify";
 
 interface SuggestedUserProps {
   user: User;
@@ -24,7 +25,6 @@ export default function SuggestedUser({ user }: SuggestedUserProps) {
   const {
     mutate: follow,
     isLoading: isFollowLoading,
-    isSuccess: isFollowSuccess,
   } = useMutation({
     mutationFn: async () => {
       const payload: FollowPayload = {
@@ -36,17 +36,44 @@ export default function SuggestedUser({ user }: SuggestedUserProps) {
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        //Toast
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       }
 
-      return; // toast
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       startTransition(() => {
         router.refresh();
       });
 
-      return; //TOAST
+      return toast.success("Successfully followed user", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
   });
 

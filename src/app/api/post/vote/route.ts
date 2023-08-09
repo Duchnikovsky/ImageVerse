@@ -16,7 +16,7 @@ export async function PATCH(req: Request) {
     const session = await getAuthSession();
 
     if (!session?.user) {
-      return new Response("Unauthorized", { status: 401 });
+      return new Response("You are unauthorized", { status: 401 });
     }
 
     const existingVote = await db.vote.findFirst({

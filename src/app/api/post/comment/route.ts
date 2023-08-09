@@ -12,7 +12,7 @@ export async function PATCH(req: Request) {
     const session = await getAuthSession();
 
     if (!session?.user) {
-      return new Response("unauthorized", { status: 401 });
+      return new Response("You are unauthorized", { status: 401 });
     }
 
     await db.comment.create({

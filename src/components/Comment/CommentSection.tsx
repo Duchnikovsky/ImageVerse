@@ -10,7 +10,6 @@ interface CommentSectionProps {
 }
 
 export default async function CommentSection({ postId }: CommentSectionProps) {
-  const session = await getAuthSession();
 
   const comments = await db.comment.findMany({
     where: {

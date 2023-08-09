@@ -5,10 +5,11 @@ import Image from "next/image";
 import { uploadFiles } from "@/lib/uploadthing";
 import { LucideUpload } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { Button } from "./Button";
+import { toast } from "react-toastify";
 
 const PostValidator = z.object({
   image: z.string(),
@@ -50,8 +51,29 @@ export default function Editor({ modal }: EditorProps) {
       const { data } = await axios.post("/api/post/create", payload);
       return data;
     },
-    onError: () => {
-      return console.log("Something went wrong");
+    onError: (err) => {
+      if (err instanceof AxiosError) {
+        return toast.error(err.response?.data, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
+      }
+      return toast.error("An error occured", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     },
     onSuccess: () => {
       if (modal) {
