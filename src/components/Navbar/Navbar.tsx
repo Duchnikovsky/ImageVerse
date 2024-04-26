@@ -6,7 +6,7 @@ import Link from "next/link";
 import { getAuthSession } from "@/lib/auth";
 import UserDropdown from "@/components/UserDropdown";
 import SignInDropdown from "@/components/SignInDropdown";
-import Searchbar from "./Searchbar";
+import Searchbar from "../Searchbar";
 
 export default async function Navbar() {
   const session = await getAuthSession();

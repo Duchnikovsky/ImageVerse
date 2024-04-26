@@ -20,8 +20,9 @@
 }
 
 .logo{
-  height: 64px;
-  width: 64px;
+  height: 50px;
+  width: 50px;
+  margin-top: 5px;
 }
 
 .searchBar{

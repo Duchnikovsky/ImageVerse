@@ -129,7 +129,7 @@ export default function Post({ post, votesAmount, currentVote, currentFavorite }
       </div>
       <div className={CSS.post}>
         <Link href={`/profile/${post.author.id}`}>
-          <b>{post.author.name}</b>
+          <span style={{fontWeight: 500}}>{post.author.name}</span>
         </Link>
         : {post.description}
       </div>

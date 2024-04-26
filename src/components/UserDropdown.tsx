@@ -25,7 +25,7 @@ export default function UserDropdown({ user }: UserDropdownProps) {
       <DropdownMenu.Content className={CSS.DropdownMenuContent} align="center">
         <div className={CSS.DropdownUser}>
           <div className={CSS.DropdownUserData}>
-            {user.name && <span style={{fontWeight: 'bold', fontSize: '18px'}}>{user.name}</span>}
+            {user.name && <span style={{fontWeight: 500, fontSize: '18px'}}>{user.name}</span>}
             {user.email && <span style={{fontSize: '15px', lineHeight: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{user.email}</span>}
           </div>
         </div>
