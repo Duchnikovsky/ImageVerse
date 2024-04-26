@@ -1,34 +1,61 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Imageverse
+
+Welcome to Imageverse! This Next.js application provides a social media platform for sharing and engaging with photos. Built with modern web technologies, Imageverse allows users to upload images, follow other users, and interact with their posts.
+
+This application is deployed and accessible at image-verse-six.vercel.app.
+
+## Features
+
+- **User Authentication**: Secure login with Google using NextAuth.
+- **Photo Upload**: Users can upload photos to share with their followers.
+- **Comments and Likes**: Users can comment on and like photos posted by others.
+- **Search Functionality**: Search for users and their photos.
+- **Responsive Design**: Fully responsive web design that adapts to various devices.
+
+## Technologies
+
+- **Next.js**: The React framework for production.
+- **TypeScript**:A typed superset of JavaScript that compiles to plain JavaScript.
+- **Prisma**: Next-generation ORM for Node.js and TypeScript.
+- **React Query**: Handles fetching, caching, synchronizing, and updating server state.
+- **NextAuth**: Simplifies building secure authentication systems.
+- **React Toastify**: Allows you to add notifications to your app with ease.
+- **Axios**: Promise based HTTP client for the browser and node.js
+
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple steps.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+### Prerequisites
+
+- Node.js
+- npm
+```sh
+npm install npm@latest -g
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repo
+```sh
+git clone https://github.com/yourusername/imageverse.git
+```
+2. Install NPM packages
+```sh
+npm install
+```
+3. Start the development server
+```sh
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+After installation, you can start using Imageverse by registering through the Google authentication system. Explore the app by uploading images, engaging with other users, and customizing your profile.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
