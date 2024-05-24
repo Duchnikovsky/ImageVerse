@@ -43,7 +43,7 @@ npm install npm@latest -g
 
 1. Clone the repo
 ```sh
-git clone https://github.com/yourusername/imageverse.git
+git clone https://github.com/Duchnikovsky/imageverse.git
 ```
 2. Install NPM packages
 ```sh
