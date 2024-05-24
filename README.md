@@ -4,6 +4,10 @@ Welcome to Imageverse! This Next.js application provides a social media platform
 
 This application is deployed and accessible at image-verse-six.vercel.app.
 
+## Little preview of application:
+
+<img src="https://utfs.io/f/ea8180fb-467f-4d36-9331-6f4c8e306f88-2g2c.png" alt="mainpage"/>
+
 ## Features
 
 - **User Authentication**: Secure login with Google using NextAuth.
@@ -52,7 +56,7 @@ npm run dev
 
 ## Usage
 
-After installation, you can start using Imageverse by registering through the Google authentication system. Explore the app by uploading images, engaging with other users, and customizing your profile.
+By accessing the app, you can see the most liked posts on the site, which you can scroll through indefinitely. You can log in with your google account, and add your own posts, follow your friends or accounts that pique your interest, and comment on photos of the accounts you follow.
 
 ## License
 
