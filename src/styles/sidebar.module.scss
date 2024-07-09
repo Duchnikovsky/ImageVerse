@@ -1,0 +1,108 @@
+.main {
+  position: sticky;
+  top: 4rem;
+  order: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 5;
+
+  .sidebar {
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--background-color);
+    box-shadow: 1px 1px 4px var(--font-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .description {
+      text-align: justify;
+      font-size: 15px;
+      color: var(--font-second-color);
+      font-weight: 500;
+    }
+
+    .welcome {
+      padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+      text-align: center;
+      font-weight: 500;
+      font-size: 26px;
+    }
+  }
+
+  .suggestedUsers {
+    border-radius: 5px;
+    padding: 1rem;
+    background-color: var(--background-color);
+    box-shadow: 1px 1px 4px var(--font-color);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .header {
+      text-align: center;
+      font-size: 15px;
+      color: var(--font-second-color);
+      font-weight: 500;
+    }
+  }
+}
+
+.suggestedUser {
+  font-size: 14px;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .user {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    overflow: hidden;
+
+    .name {
+      width: 7rem;
+      text-wrap: nowrap;
+      overflow-x: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      & {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .main {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    top: 0;
+    position: static;
+    order: -9999;
+
+    .sidebar {
+      border-radius: 0;
+    }
+
+    .suggestedUsers {
+      display: none;
+    }
+  }
+}

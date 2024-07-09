@@ -3,7 +3,7 @@
 import CSS from "@/styles/postDetails.module.css";
 import UserAvatar from "../UserAvatar";
 import { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../UI/Button";
 import { useMutation } from "@tanstack/react-query";
 import { CommentCreationRequest } from "@/lib/validators/comment";
 import axios, { AxiosError } from "axios";

@@ -4,7 +4,7 @@ import CSS from "@/styles/feed.module.css";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ProfilePost from "./ProfilePost";
-import { Button } from "../Button";
+import { Button } from "../UI/Button";
 import { AlertCircle } from "lucide-react";
 
 interface ProfileFeedProps {

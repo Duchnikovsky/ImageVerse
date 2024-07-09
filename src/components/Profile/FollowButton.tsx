@@ -5,7 +5,7 @@ import axios, { AxiosError } from "axios";
 import { startTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { Button } from "@/components/Button";
+import { Button } from "@/components/UI/Button";
 import { toast } from "react-toastify";
 
 interface FollowButtonProps {

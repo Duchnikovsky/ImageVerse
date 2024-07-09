@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { Session } from "next-auth";
-import CSS from "@/styles/home.module.css";
-import { Button } from "@/components/Button";
+import CSS from "@/styles/sidebar.module.scss";
+import { Button } from "@/components/UI/Button";
 import Link from "next/link";
 import SuggestedUser from "@/components/SuggestedUser";
 
@@ -62,62 +62,45 @@ export default async function Sidebar({ session }: SidebarProps) {
     },
   });
 
+  if (session?.user)
+    return (
+      <div className={CSS.main}>
+        <div className={CSS.sidebar}>
+          <div className={CSS.description}>
+            Share your experiences with friends and followers by adding new
+            posts
+          </div>
+          <Link href="/create">
+            <Button width="100%" height="2.25rem">
+              Create post
+            </Button>
+          </Link>
+        </div>
+        {proposedUsersCount > 0 && (
+          <div className={CSS.suggestedUsers}>
+            <span className={CSS.header}>Suggestions for you</span>
+            {proposedUsers.map((user, index) => (
+              <SuggestedUser user={user} key={index} />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+
   return (
-    <div className={CSS.sidebar}>
-      {session?.user ? (
-        <div className={CSS.rightPanel}>
-          <div className={CSS.userBox}>
-            <div className={CSS.description}>
-              Share your experiences with friends and followers by adding new
-              posts
-            </div>
-            <Link href="/create">
-              <Button
-                width="80%"
-                height="2rem"
-                fontSize="17px"
-                isDisabled={false}
-                isLoading={false}
-                margin={"auto"}
-              >
-                Create new post
-              </Button>
-            </Link>
-          </div>
-          {proposedUsersCount > 0 && (
-            <div className={CSS.proposedUsers}>
-              <div className={CSS.proposedDescription}>Suggestions for you</div>
-              {proposedUsers.map((user, index) => (
-                <SuggestedUser user={user} key={index} />
-              ))}
-            </div>
-          )}
+    <div className={CSS.main}>
+      <div className={CSS.sidebar}>
+        <div className={CSS.welcome}>Welcome to the ImageVerse</div>
+        <div className={CSS.description}>
+          Sign in and share your experiences with friends and followers by
+          adding new posts
         </div>
-      ) : (
-        <div className={CSS.rightPanel}>
-          <div className={CSS.userBox}>
-            <div className={CSS.nameBox}>
-              <p className={CSS.name}>Welcome to the ImageVerse</p>
-            </div>
-            <div className={CSS.description}>
-              Sign in and share your experiences with friends and followers by
-              adding new posts
-            </div>
-            <Link href="/signIn">
-              <Button
-                width="80%"
-                height="2rem"
-                fontSize="17px"
-                isDisabled={false}
-                isLoading={false}
-                margin={"auto"}
-              >
-                Sign in to ImageVerse
-              </Button>
-            </Link>
-          </div>
-        </div>
-      )}
+        <Link href="/signIn">
+          <Button width="100%" height="2.25rem" fontSize="17px">
+            Sign in to ImageVerse
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

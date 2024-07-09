@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
-import { Button } from "./Button";
+import { Button } from "./UI/Button";
 import { toast } from "react-toastify";
 
 const PostValidator = z.object({

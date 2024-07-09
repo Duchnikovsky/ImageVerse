@@ -1,0 +1,27 @@
+@import "mixin";
+
+.button{
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  @include center-content;
+  gap: 5px;
+  box-shadow: 1px 1px 4px var(--font-color);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+
+  &:not(:disabled):hover{
+    background-color: var(--hover-light);
+  }
+
+  &:disabled{
+    background-color: var(--hover-light);
+    cursor: not-allowed;
+  }
+
+  .loader{
+    @include spin;
+  }
+}

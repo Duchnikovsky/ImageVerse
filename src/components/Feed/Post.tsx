@@ -8,7 +8,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import PostVoteClient from "../PostVoteClient";
 import UserAvatar from "../UserAvatar";
 import { useState } from "react";
-import { Button } from "../Button";
+import { Button } from "../UI/Button";
 import { CommentCreationRequest } from "@/lib/validators/comment";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";

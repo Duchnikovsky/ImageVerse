@@ -4,7 +4,7 @@ import CSS from "@/styles/favorites.module.css";
 import { ExtendedPost } from "@/types/db";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Button } from "../Button";
+import { Button } from "../UI/Button";
 import ProfilePost from "../Profile/ProfilePost";
 import { AlertCircle } from "lucide-react";
 

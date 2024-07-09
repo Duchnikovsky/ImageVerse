@@ -22,117 +22,122 @@ export default function PostFeed({ session, following }: PostFeedProps) {
   });
   const [status, setStatus] = useState<string>('')
 
-  const {
-    data,
-    fetchNextPage,
-    isFetchingNextPage,
-    isLoading,
-    isFetching,
-    isFetched,
-  } = useInfiniteQuery(
-    ["infinite-query"],
-    async ({ pageParam = 1 }) => {
-      const query = `/api/posts/main?limit=2&page=${pageParam}`;
+  return <ul className={CSS.ul}>
 
-      const { data } = await axios.get(query);
+    
+  </ul>
 
-      const { posts, status } = data;
+  // const {
+  //   data,
+  //   fetchNextPage,
+  //   isFetchingNextPage,
+  //   isLoading,
+  //   isFetching,
+  //   isFetched,
+  // } = useInfiniteQuery(
+  //   ["infinite-query"],
+  //   async ({ pageParam = 1 }) => {
+  //     const query = `/api/posts/main?limit=2&page=${pageParam}`;
 
-      setStatus(status)
+  //     const { data } = await axios.get(query);
 
-      return { posts: posts as ExtendedPost[], status: status };
-    },
-    {
-      getNextPageParam: (_, pages) => {
-        return pages.length + 1;
-      },
-      initialData: { pages: [], pageParams: [1] },
-    }
-  );
+  //     const { posts, status } = data;
 
-  useEffect(() => {
-    if (entry?.isIntersecting) {
-      fetchNextPage();
-    }
-  }, [entry, fetchNextPage]);
+  //     setStatus(status)
 
-  const posts = (data?.pages.flatMap((page) => page.posts) || []) || [];
+  //     return { posts: posts as ExtendedPost[], status: status };
+  //   },
+  //   {
+  //     getNextPageParam: (_, pages) => {
+  //       return pages.length + 1;
+  //     },
+  //     initialData: { pages: [], pageParams: [1] },
+  //   }
+  // );
 
-  return (
-    <ul className={CSS.ul}>
-      {!session?.user && isFetched && (
-        <li className={CSS.proposedPosts}>
-          <div className={CSS.proposedPostsUpper}>
-            Displaying most liked posts
-          </div>
-          <div>Sign in to view posts of followed users</div>
-        </li>
-      )}
-      {session && following === 0 && (
-        <div>
-          <li className={CSS.proposedPosts}>
-            <div className={CSS.proposedPostsUpper}>
-              Displaying most liked posts
-            </div>
-            <div>Follow some users to see personalized feed</div>
-          </li>
-        </div>
-      )}
-      {status === 'noPosts' && (
-        <li className={CSS.proposedPosts}>
-          <div className={CSS.proposedPostsUpper}>
-            No posts from users you&apos;re following
-          </div>
-          <div>Displaying most liked posts until something show up</div>
-        </li>
-      )}
-      {posts.map((post, index) => {
-        const votesAmount = post.votes.reduce((acc, vote) => {
-          if (vote.type === "UP") return acc + 1;
-          if (vote.type === "DOWN") return acc - 1;
-          return acc;
-        }, 0);
+  // useEffect(() => {
+  //   if (entry?.isIntersecting) {
+  //     fetchNextPage();
+  //   }
+  // }, [entry, fetchNextPage]);
 
-        const currentVote = post.votes.find(
-          (vote) => vote.userId === session?.user.id
-        );
+  // const posts = (data?.pages.flatMap((page) => page.posts) || []) || [];
 
-        let currentFavorite = undefined;
+  // return (
+  //   <ul className={CSS.ul}>
+  //     {!session?.user && isFetched && (
+  //       <li className={CSS.proposedPosts}>
+  //         <div className={CSS.proposedPostsUpper}>
+  //           Displaying most liked posts
+  //         </div>
+  //         <div>Sign in to view posts of followed users</div>
+  //       </li>
+  //     )}
+  //     {session && following === 0 && (
+  //       <div>
+  //         <li className={CSS.proposedPosts}>
+  //           <div className={CSS.proposedPostsUpper}>
+  //             Displaying most liked posts
+  //           </div>
+  //           <div>Follow some users to see personalized feed</div>
+  //         </li>
+  //       </div>
+  //     )}
+  //     {status === 'noPosts' && (
+  //       <li className={CSS.proposedPosts}>
+  //         <div className={CSS.proposedPostsUpper}>
+  //           No posts from users you&apos;re following
+  //         </div>
+  //         <div>Displaying most liked posts until something show up</div>
+  //       </li>
+  //     )}
+  //     {posts.map((post, index) => {
+  //       const votesAmount = post.votes.reduce((acc, vote) => {
+  //         if (vote.type === "UP") return acc + 1;
+  //         if (vote.type === "DOWN") return acc - 1;
+  //         return acc;
+  //       }, 0);
 
-        if (post.favorite) {
-          currentFavorite = post.favorite.find(
-            (favorite) => favorite.userId === session?.user.id
-          );
-        }
+  //       const currentVote = post.votes.find(
+  //         (vote) => vote.userId === session?.user.id
+  //       );
 
-        if (index === posts.length - 1) {
-          return (
-            <li key={post.id} ref={ref} className={CSS.li}>
-              <Post
-                post={post}
-                votesAmount={votesAmount}
-                currentVote={currentVote}
-                currentFavorite={currentFavorite}
-              />
-            </li>
-          );
-        } else {
-          return (
-            <Post
-              post={post}
-              votesAmount={votesAmount}
-              currentVote={currentVote}
-              currentFavorite={currentFavorite}
-              key={post.id}
-            />
-          );
-        }
-      })}
-      {(isFetchingNextPage || isLoading || isFetching) && (
-        <li className={CSS.loading}>
-          <Loader2 className={CSS.loader} />
-        </li>
-      )}
-    </ul>
-  );
+  //       let currentFavorite = undefined;
+
+  //       if (post.favorite) {
+  //         currentFavorite = post.favorite.find(
+  //           (favorite) => favorite.userId === session?.user.id
+  //         );
+  //       }
+
+  //       if (index === posts.length - 1) {
+  //         return (
+  //           <li key={post.id} ref={ref} className={CSS.li}>
+  //             <Post
+  //               post={post}
+  //               votesAmount={votesAmount}
+  //               currentVote={currentVote}
+  //               currentFavorite={currentFavorite}
+  //             />
+  //           </li>
+  //         );
+  //       } else {
+  //         return (
+  //           <Post
+  //             post={post}
+  //             votesAmount={votesAmount}
+  //             currentVote={currentVote}
+  //             currentFavorite={currentFavorite}
+  //             key={post.id}
+  //           />
+  //         );
+  //       }
+  //     })}
+  //     {(isFetchingNextPage || isLoading || isFetching) && (
+  //       <li className={CSS.loading}>
+  //         <Loader2 className={CSS.loader} />
+  //       </li>
+  //     )}
+  //   </ul>
+  // );
 }
