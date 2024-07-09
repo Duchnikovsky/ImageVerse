@@ -2,22 +2,28 @@
 import React from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import DropDownCSS from "@/styles/dropdown.module.css";
-import UserAvatar from "./UserAvatar";
+import UserAvatar from "../UserAvatar";
 import Link from "next/link";
+import NavOption from "@/components/Navbar/NavOption";
 
 export default function SignInDropdown() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className={DropDownCSS.trigger}>
-        <UserAvatar user={{}} style={'medium'} />
+        <NavOption
+          option="Sign in"
+          icon={<UserAvatar user={{}} style={"small"} />}
+        />
       </DropdownMenu.Trigger>
       <DropdownMenu.Content
         className={DropDownCSS.DropdownMenuContent}
         align="end"
       >
-         <div className={DropDownCSS.DropdownUser}>
+        <div className={DropDownCSS.DropdownUser}>
           <div className={DropDownCSS.DropdownUserData}>
-            <span>Welcome to <b>ImageVerse</b></span>
+            <span>
+              Welcome to <b>ImageVerse</b>
+            </span>
           </div>
         </div>
         <DropdownMenu.Separator className={DropDownCSS.DropdownMenuSeparator} />

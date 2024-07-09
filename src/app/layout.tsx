@@ -1,11 +1,6 @@
 import Navbar from "@/components/Navbar/Navbar";
-import "./globals.css";
-import { Inter } from "next/font/google";
+import "./globals.scss";
 import Providers from "@/components/Providers";
-import ToastProvider from "@/components/ToastProvider";
-
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "ImageVerse",
@@ -20,15 +15,14 @@ export default function RootLayout({
   modal: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
       <body>
         <Providers>
-          <Navbar />
-          <div className="body">
-            {children}
-          </div>
+          <nav>
+            <Navbar />
+          </nav>
+          {children}
           {modal}
-          <ToastProvider />
         </Providers>
       </body>
     </html>

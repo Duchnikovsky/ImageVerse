@@ -5,7 +5,10 @@
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
+  background-color: purple;
+  border: 1px solid var(--font-color);
   width: 45px;
+  min-width: 45px;
   height: 45px;
   border-radius: 100%;
 }
@@ -17,6 +20,7 @@
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
+  background-color: yellow;
   width: 75px;
   height: 75px;
   border-radius: 100%;
@@ -29,8 +33,9 @@
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
-  width: 30px;
-  height: 30px;
+  background-color: green;
+  width: 24px;
+  height: 24px;
   border-radius: 100%;
 }
 
@@ -51,8 +56,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  color: rgb(87, 70, 175);
+  background-color: transparent;
+  color: var(--text-color);
   font-size: 15px;
   line-height: 1;
   font-weight: 500;

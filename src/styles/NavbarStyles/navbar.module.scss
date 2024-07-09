@@ -1,0 +1,213 @@
+@import "../mixin";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: var(--background-color);
+  box-shadow: 0px -2px 5px var(--font-color);
+  display: flex;
+  justify-content: center;
+  transition: width 200ms ease-in-out;
+  z-index: 1000;
+
+  &.open {
+    width: 15rem;
+  }
+
+  &.closed {
+    width: 4.5rem;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+    padding-top: 2rem;
+    gap: 1rem;
+
+    .logo {
+      display: block;
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto;
+    }
+
+    .optionsContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      padding: 0 1rem 0 0.75rem;
+      width: 100%;
+      height: 100%;
+      gap: 1rem;
+
+      .navOption {
+        position: relative;
+        width: 100%;
+        min-width: 3rem;
+        height: 3rem;
+        border-radius: 1rem;
+        font-size: 24px;
+        padding-left: 0.75rem;
+        background-color: transparent;
+        color: var(--font-color);
+        cursor: pointer;
+        transition: linear 100ms background-color;
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+
+        &:hover {
+          background-color: var(--hover-light);
+        }
+
+        .optionText {
+          position: absolute;
+          font-size: 18px;
+          left: 3rem;
+          font-family: var(--font-family);
+          font-weight: 500;
+          text-wrap: nowrap;
+        }
+      }
+
+      .lastOption {
+        margin-top: auto;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.searchbar {
+  position: absolute;
+  top: 0;
+  left: 4.5rem;
+  height: 100vh;
+  transition: width 300ms ease-in-out;
+  overflow: hidden;
+}
+
+.searchOpen {
+  width: 20rem;
+  padding: 0 1rem;
+  box-shadow: 0px 0px 5px var(--font-color);
+}
+
+.searchClosed {
+  width: 0;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    width: 4.5rem;
+    transition: width 0ms ease;
+
+    &.open {
+      width: 4.5rem;
+    }
+
+    &.closed {
+      width: 4.5rem;
+    }
+
+    nav {
+      align-items: center;
+      padding-left: 0;
+
+      .optionsContainer {
+        padding: 0;
+
+        .navOption {
+          width: 3rem;
+          margin: 0 auto;
+          padding: 0;
+          @include center-content;
+
+          .optionText {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: auto;
+    bottom: 0;
+    right: 0;
+    width: 100vw;
+    height: 3.5rem;
+    box-shadow: 0px 1px 5px var(--font-color);
+    transition: width 0ms ease;
+
+    &.open {
+      width: 100vw;
+    }
+
+    &.closed {
+      width: 100vw;
+    }
+
+    nav {
+      width: 100%;
+      height: 100%;
+      padding-top: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .optionsContainer {
+        position: absolute;
+        margin-top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+
+        .navOption {
+          margin: 0;
+        }
+
+        .lastOption {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .logo {
+        display: none;
+        flex: 0 0 100%;
+      }
+    }
+  }
+
+  .searchbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 0ms ease;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .searchOpen {
+    width: 100vw;
+    padding: 0 1rem;
+  }
+
+  .searchClosed {
+    width: 0;
+    padding: 0;
+  }
+}

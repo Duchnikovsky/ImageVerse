@@ -2,6 +2,8 @@
   background: none;
   outline: 0;
   border: 0;
+  width: 100%;
+  font-weight: 500;
 }
 
 .DropdownUser {
@@ -55,7 +57,6 @@
 .DropdownMenuCheckboxItem,
 .DropdownMenuRadioItem,
 .DropdownMenuSubTrigger {
-  font-size: 18px;
   line-height: 1;
   color: #c4c6c8;
   border-radius: 3px;
@@ -116,7 +117,6 @@
 }
 
 .IconButton {
-  font-family: inherit;
   border-radius: 100%;
   height: 35px;
   width: 35px;

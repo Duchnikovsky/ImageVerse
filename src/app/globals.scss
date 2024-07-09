@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'ClashGrotesk';
+  src: url(../assets/ClashGrotesk.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-color: #f8fafc;
+  --navbar-color:#f1f5f9;
+  --font-color: #09090b;
+  --font-second-color: rgb(80, 88, 109);
+  --font-size: 16px;
+  --font-family: 'ClashGrotesk', sans-serif;
+  --hover-light: rgba(100, 116, 139,0.1);
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --background-color: #09090b;
+    --navbar-color:#18181b;
+    --font-color: #f4f4f5;
+    --font-second-color:rgb(175, 180, 194);
+    --hover-light: rgba(193, 195, 198, 0.1);
+  }
+}
+
+html, body {
+  max-width: 1000px;
+  margin: auto;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+}
+
+a{
+  text-decoration: none;
+  color: var(--font-color);
+}

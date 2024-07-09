@@ -10,13 +10,14 @@ export async function GET(req: Request) {
   const users = await db.user.findMany({
     where: {
       name: {
-        startsWith: q,
+        contains: q,
       },
     },
     select: {
       id: true,
       name: true,
       image: true,
+      username: true,
       _count: true,
     },
     take: 5,
