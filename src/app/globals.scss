@@ -17,17 +17,19 @@
   --font-size: 16px;
   --font-family: "ClashGrotesk", sans-serif;
   --hover-light: rgba(100, 116, 139, 0.1);
+  --font-weight: 500;
 }
 
-@media(prefers-color-scheme: dark) {
-  :root {
-    --background-color: #09090b;
-    --navbar-color:#18181b;
-    --font-color: #f4f4f5;
-    --font-second-color:rgb(175, 180, 194);
-    --hover-light: rgba(193, 195, 198, 0.1);
-  }
-}
+// @media(prefers-color-scheme: dark) {
+//   :root {
+//     --background-color: #09090b;
+//     --navbar-color:#18181b;
+//     --font-color: #f4f4f5;
+//     --font-second-color:rgb(175, 180, 194);
+//     --hover-light: rgba(193, 195, 198, 0.1);
+//     --font-weight: 400;
+//   }
+// }
 
 html,
 body {

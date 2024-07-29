@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import DropDownCSS from "@/styles/dropdown.module.css";
+import DropDownCSS from "@/styles/dropdown.module.scss";
 import UserAvatar from "../UserAvatar";
 import Link from "next/link";
 import NavOption from "@/components/Navbar/NavOption";

@@ -1,7 +1,7 @@
 "use client";
 import { User } from "next-auth";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import CSS from "@/styles/dropdown.module.css";
+import CSS from "@/styles/dropdown.module.scss";
 import UserAvatar from "@/components/UserAvatar";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
