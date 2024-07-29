@@ -64,7 +64,7 @@ export default async function Sidebar({ session }: SidebarProps) {
 
   if (session?.user)
     return (
-      <div className={CSS.main}>
+      <aside className={CSS.main}>
         <div className={CSS.sidebar}>
           <div className={CSS.description}>
             Share your experiences with friends and followers by adding new
@@ -84,11 +84,11 @@ export default async function Sidebar({ session }: SidebarProps) {
             ))}
           </div>
         )}
-      </div>
+      </aside>
     );
 
   return (
-    <div className={CSS.main}>
+    <aside className={CSS.main}>
       <div className={CSS.sidebar}>
         <div className={CSS.welcome}>Welcome to the ImageVerse</div>
         <div className={CSS.description}>
@@ -101,6 +101,6 @@ export default async function Sidebar({ session }: SidebarProps) {
           </Button>
         </Link>
       </div>
-    </div>
+    </aside>
   );
 }

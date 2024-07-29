@@ -85,14 +85,9 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .main {
-    display: flex;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .main {
+    display: flex;
     top: 0;
     position: static;
     order: -9999;

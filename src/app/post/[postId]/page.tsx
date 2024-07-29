@@ -10,7 +10,7 @@ import CommentSection from "@/components/Comment/CommentSection";
 import CommentCreator from "@/components/Comment/CommentCreator";
 import { getAuthSession } from "@/lib/auth";
 import { formatTimeToNow } from "@/lib/utilities";
-import PostVoteClient from "@/components/PostVoteClient";
+import PostVoteClient from "@/components/Feed/PostVoteClient";
 
 interface pageProps {
   params: {

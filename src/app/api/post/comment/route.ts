@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { CommentValidator } from "@/lib/validators/comment";
 import { z } from "zod";
 
-export async function PATCH(req: Request) {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
 

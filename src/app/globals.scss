@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'ClashGrotesk';
+  font-family: "ClashGrotesk";
   src: url(../assets/ClashGrotesk.ttf);
 }
 
@@ -11,12 +11,12 @@
 
 :root {
   --background-color: #f8fafc;
-  --navbar-color:#f1f5f9;
+  --navbar-color: #f1f5f9;
   --font-color: #09090b;
   --font-second-color: rgb(80, 88, 109);
   --font-size: 16px;
-  --font-family: 'ClashGrotesk', sans-serif;
-  --hover-light: rgba(100, 116, 139,0.1);
+  --font-family: "ClashGrotesk", sans-serif;
+  --hover-light: rgba(100, 116, 139, 0.1);
 }
 
 @media(prefers-color-scheme: dark) {
@@ -29,16 +29,37 @@
   }
 }
 
-html, body {
-  max-width: 1000px;
-  margin: auto;
+html,
+body {
   background-color: var(--background-color);
   color: var(--font-color);
   font-size: var(--font-size);
   font-family: var(--font-family);
 }
 
-a{
+main {
+  width: calc(100% - 15rem);
+  height: 4rem;
+  margin-left: 15rem;
+  display: flex;
+  justify-content: center;
+}
+
+a {
   text-decoration: none;
   color: var(--font-color);
+}
+
+@media screen and (max-width: 1024px) {
+  main {
+    width: calc(100% - 4.5rem);
+    margin-left: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    width: 100%;
+    margin: auto;
+  }
 }
