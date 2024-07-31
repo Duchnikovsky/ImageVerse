@@ -36,6 +36,7 @@
       span {
         width: 1.5rem;
         height: 1.5rem;
+        padding-left: 2px;
         @include center-content;
         border-radius: 5px;
         box-shadow: 1px 1px 4px var(--font-color);

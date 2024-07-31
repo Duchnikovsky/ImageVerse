@@ -95,7 +95,7 @@
     align-items: center;
     .loaderIcon {
       color: var(--font-color);
-      animation: spin 1s linear infinite;
+      @include spin;
     }
   }
   .user {
