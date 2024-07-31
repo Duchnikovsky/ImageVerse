@@ -2,7 +2,7 @@
 import { User } from "next-auth";
 import React from "react";
 import * as Avatar from '@radix-ui/react-avatar';
-import CSS from '@/styles/avatar.module.css';
+import CSS from '@/styles/avatar.module.scss';
 import { Icons } from "./Icons";
 
 interface UserAvatarProps{
@@ -11,16 +11,16 @@ interface UserAvatarProps{
 }
 
 export default function UserAvatar({ user, style }: UserAvatarProps) {
-  return <Avatar.Root className={style === 'large' ? CSS.AvatarRootLarge : (style === 'small' ? CSS.AvatarRootSmall : CSS.AvatarRoot)}>
+  return <Avatar.Root className={style === 'large' ? CSS.large : (style === 'small' ? CSS.small : CSS.default)}>
     {user.image ? (
       <Avatar.Image
-      className={CSS.AvatarImage}
+      className={CSS.image}
       src={user.image}
       alt='profile picture'
       referrerPolicy="no-referrer"
       />
     ) : (
-      <Avatar.Fallback className={CSS.AvatarFallback}>
+      <Avatar.Fallback className={CSS.fallback}>
         <Icons.user />
       </Avatar.Fallback>
     )}

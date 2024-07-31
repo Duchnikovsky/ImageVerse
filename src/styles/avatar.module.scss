@@ -1,56 +1,50 @@
-.AvatarRoot {
+.default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
-  background-color: purple;
-  border: 1px solid var(--font-color);
   width: 45px;
   min-width: 45px;
   height: 45px;
   border-radius: 100%;
+  box-shadow: 0px 0px 4px var(--font-color);
 }
 
-.AvatarRootLarge {
+.large {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
-  background-color: yellow;
   width: 75px;
   height: 75px;
   border-radius: 100%;
 }
 
-.AvatarRootSmall {
+.small {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
-  background-color: green;
   width: 24px;
   height: 24px;
   border-radius: 100%;
 }
 
-.AvatarImage {
+.image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
-}
-
-.AvatarImage:hover, .AvatarFallback:hover{
   cursor: pointer;
 }
 
-.AvatarFallback {
+.fallback{
   width: 100%;
   height: 100%;
   display: flex;
@@ -61,4 +55,5 @@
   font-size: 15px;
   line-height: 1;
   font-weight: 500;
+  cursor: pointer;
 }
