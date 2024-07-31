@@ -1,6 +1,6 @@
 import { FC } from "react";
-import SignUp from "@/components/SignIn";
-import CSS from "@/styles/auth.module.css";
+import SignUp from "@/components/Auth/SignIn";
+import CSS from "@/styles/auth.module.scss";
 
 const page: FC = () => {
   return (

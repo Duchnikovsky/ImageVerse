@@ -1,13 +1,11 @@
-import Editor from "@/components/Editor";
+import PostCreator from "@/components/PostCreator";
 import React from "react";
-import CSS from "@/styles/createModal.module.css";
+import CSS from "@/styles/modal.module.scss";
 
 export default function page() {
   return (
-    <div className={CSS.main}>
-      <div className={CSS.containerNoBorder}>
-        <Editor modal={false} />
-      </div>
+    <div className={CSS.creatorPage}>
+      <PostCreator modal={false} />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 import { FC, useState } from "react";
-import CSS from "@/styles/auth.module.css";
+import CSS from "@/styles/auth.module.scss";
 import { Icons } from "@/components/Icons";
 import { signIn } from "next-auth/react";
-import { Button } from "./UI/Button";
+import { Button } from "@/components/UI/Button";
 
 interface SignInButtonProps extends React.HTMLAttributes<HTMLDivElement> {}
 

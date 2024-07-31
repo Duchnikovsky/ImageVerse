@@ -1,16 +1,14 @@
 import CloseModalButton from "@/components/CloseModalButton";
-import Editor from "@/components/Editor";
-import CSS from "@/styles/createModal.module.css";
+import PostCreator from "@/components/PostCreator";
+import CSS from "@/styles/modal.module.scss";
 import "@uploadthing/react/styles.css";
 
 export default function page() {
   return (
-    <div className={CSS.background}>
-      <div className={CSS.container}>
-        <div className={CSS.closeModal}>
-          <CloseModalButton />
-        </div>
-        <Editor modal={true}/>
+    <div className={CSS.modal}>
+      <div className={CSS.window}>
+        <CloseModalButton />
+        <PostCreator modal={true} />
       </div>
     </div>
   );

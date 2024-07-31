@@ -1,10 +1,10 @@
 import { FC } from "react";
-import SignIn from "@/components/SignIn";
-import CSS from "@/styles/auth.module.css";
+import SignIn from "@/components/Auth/SignIn";
+import CSS from "@/styles/auth.module.scss";
 
 const page: FC = () => {
   return (
-    <div className={CSS.borderBox}>
+    <div className={CSS.signInPage}>
       <SignIn />
     </div>
   );

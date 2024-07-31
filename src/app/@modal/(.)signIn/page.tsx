@@ -1,20 +1,20 @@
 import { FunctionComponent } from "react";
 
-import CSS from "@/styles/modal.module.css";
-import SignIn from "@/components/SignIn";
+import CSS from "@/styles/modal.module.scss";
+import SignIn from "@/components/Auth/SignIn";
 import CloseModalButton from "@/components/CloseModalButton";
 
 interface pageProps {}
 
 const page: FunctionComponent<pageProps> = () => {
-  return <div className={CSS.background}>
-    <div className={CSS.container}>
-      <div className={CSS.closeModal}>
+  return (
+    <div className={CSS.modal}>
+      <div className={CSS.window}>
         <CloseModalButton />
+        <SignIn />
       </div>
-      <SignIn />
     </div>
-  </div>;
+  );
 };
 
 export default page;
