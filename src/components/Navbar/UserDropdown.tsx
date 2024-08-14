@@ -59,7 +59,7 @@ export default function UserDropdown({ user }: UserDropdownProps) {
           <Link href="/">Feed</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
-          <Link href="/favorites">Favorites</Link>
+          <Link href={`/profile/${user.id}/favorites`}>Favorites</Link>
         </DropdownMenu.Item>
         <DropdownMenu.Item className={CSS.DropdownMenuItem} asChild>
           <Link href="/settings">Settings</Link>

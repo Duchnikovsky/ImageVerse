@@ -9,18 +9,24 @@ export async function GET(req: Request) {
 
   try {
     if (!session) {
-      return new Response("unauthorized", { status: 401 });
+      return new Response("You are unathorized", { status: 401 });
     }
 
-    const { limit, page } = z
+    const { limit, page, user } = z
       .object({
         limit: z.string(),
         page: z.string(),
+        user: z.string(),
       })
       .parse({
         limit: url.searchParams.get("limit"),
         page: url.searchParams.get("page"),
+        user: url.searchParams.get("user"),
       });
+
+    if (session.user.id !== user) {
+      return new Response("You are unathorized", { status: 401 });
+    }
 
     let favorizedPostsId: string[] = [];
 

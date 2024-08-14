@@ -2,7 +2,7 @@
 
 import { User } from "next-auth";
 import UserAvatar from "../UserAvatar";
-import CSS from "@/styles/profile.module.css";
+import CSS from "@/styles/ProfileStyles/profile.module.scss";
 import FollowButton from "./FollowButton";
 
 interface UserDataProps {
@@ -21,25 +21,39 @@ export default function UserData({
   following,
 }: UserDataProps) {
   return (
-    <div className={CSS.userData}>
-      <UserAvatar user={user} style="large" />
-      <div className={CSS.name}>{user.name}</div>
-      <div className={CSS.statistics}>
-        <div className={CSS.statistic}>
-          <div>Followers</div>
-          {followers}
+    <div className={CSS.profile}>
+      <div className={CSS.avatar}>
+        <UserAvatar user={user} style="large" />
+      </div>
+      <div className={CSS.header}>
+        <div className={CSS.username}>{user.name}</div>
+        <FollowButton isFollowing={following} userId={user.id} />
+      </div>
+      <div className={CSS.counters}>
+        <div>
+          Posts: <span>{postsCount}</span>
         </div>
-        <div className={CSS.statistic}>
-          <div>Posts</div>
-          {postsCount}
+        <div>
+          Followers: <span>{followers}</span>
         </div>
-        <div className={CSS.statistic}>
-          <div>Following</div>
-          {followed}
+        <div>
+          Following: <span>{followed}</span>
         </div>
       </div>
-      <div className={CSS.buttonArea}>
-        <FollowButton isFollowing={following} userId={user.id} />
+      <div className={CSS.description}>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero odit
+          iste porro fugit. Saepe quae natus a totam recusandae suscipit impedit
+          tempora, aperiam exercitationem! Eveniet suscipit maxime aut explicabo
+          sint!Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Eum aut sequi voluptatum culpa ea dolore, dolorum numquam eveniet
+          dicta nam possimus nihil minus officia. Fuga omnis fugit natus porro
+          eos. impedit tempora, aperiam exercitationem! Eveniet suscipit maxime
+          aut explicabo sint!Lorem Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Eum aut sequi voluptatum culpa ea dolore, dolorum
+          numquam eveniet dicta nam possimus nihil minus officia. Fuga omnis
+          fugit natus porro eos.
+        </span>
       </div>
     </div>
   );

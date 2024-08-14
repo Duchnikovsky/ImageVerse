@@ -14,56 +14,8 @@ interface pageProps {
 export default async function page({ params }: pageProps) {
   const { userId } = params;
 
-  const session = await getAuthSession();
-
-  const user = await db.user.findFirst({
-    where: {
-      id: userId,
-    },
-  });
-
-  const following = !session?.user
-    ? undefined
-    : await db.following.findFirst({
-        where: {
-          followedId: userId,
-          followerId: session?.user.id,
-        },
-      });
-
-  const isFollowing = !!following;
-
-  const postsCount = await db.post.count({
-    where: {
-      authorId: userId,
-    },
-  });
-
-  const followers = await db.following.count({
-    where: {
-      followedId: userId,
-    },
-  });
-
-  const followed = await db.following.count({
-    where: {
-      followerId: userId,
-    },
-  });
-
-  if (!user) {
-    return notFound();
-  }
-
   return (
-    <div className={CSS.main}>
-      <UserData
-        user={user}
-        postsCount={postsCount}
-        followers={followers}
-        followed={followed}
-        following={isFollowing}
-      />
+    <div>
       <ProfileFeed userId={userId} />
     </div>
   );

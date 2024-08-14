@@ -2,7 +2,7 @@
 import { Post, User, Vote } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-import CSS from "@/styles/profilePost.module.css";
+import CSS from "@/styles/ProfileStyles/profileFeed.module.scss";
 import { Heart } from "lucide-react";
 
 interface ProfilePostProps {
@@ -15,7 +15,7 @@ interface ProfilePostProps {
 
 export default function ProfilePost({ post, votesAmount }: ProfilePostProps) {
   return (
-    <div className={CSS.main} key={post.id}>
+    <div className={CSS.post} key={post.id}>
       <Link href={`/post/${post.id}`} className={CSS.imageArea}>
         <Image
           alt="image"
@@ -26,8 +26,15 @@ export default function ProfilePost({ post, votesAmount }: ProfilePostProps) {
           priority={false}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         ></Image>
-        <div className={CSS.hoverDiv}>
-          <Heart stroke="#e8e8e8" fill="white" />
+
+        <div className={CSS.info}>
+          <Heart
+            stroke="black"
+            strokeWidth={0.5}
+            size={32}
+            fill="white"
+            className={CSS.heart}
+          />
           {votesAmount}
         </div>
       </Link>

@@ -1,10 +1,8 @@
 "use client";
-import CSS from "@/styles/profile.module.css";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { startTransition } from "react";
 import { useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
 import { Button } from "@/components/UI/Button";
 import { toast } from "react-toastify";
 
@@ -23,7 +21,7 @@ export default function FollowButton({
 }: FollowButtonProps) {
   const router = useRouter();
 
-  const { mutate: follow, isLoading: isFollowLoading } = useMutation({
+  const { mutate: follow, isPending: isFollowLoading } = useMutation({
     mutationFn: async () => {
       const payload: FollowPayload = {
         userId,
@@ -34,48 +32,21 @@ export default function FollowButton({
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        return toast.error(err.response?.data, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        return toast.error(err.response?.data);
       }
 
-      return toast.error("An error occured", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      return toast.error("An error occured");
     },
     onSuccess: () => {
       startTransition(() => {
         router.refresh();
       });
 
-      return toast.success("Successfully followed user", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      return toast.success("Successfully followed user");
     },
   });
 
-  const { mutate: unfollow, isLoading: isUnfollowLoading } = useMutation({
+  const { mutate: unfollow, isPending: isUnfollowLoading } = useMutation({
     mutationFn: async () => {
       const payload: FollowPayload = {
         userId,
@@ -86,68 +57,39 @@ export default function FollowButton({
     },
     onError: (err) => {
       if (err instanceof AxiosError) {
-        return toast.error(err.response?.data, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "dark",
-        });
+        return toast.error(err.response?.data);
       }
 
-      return toast.error("An error occured", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      return toast.error("An error occured");
     },
     onSuccess: () => {
       startTransition(() => {
         router.refresh();
       });
 
-      return toast.info("Successfully unfollowed user", {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
+      return toast.info("Successfully unfollowed user");
     },
   });
 
   return isFollowing ? (
     <Button
-      width="90%"
+      width="8rem"
       height="2rem"
-      isLoading={isUnfollowLoading}
-      fontSize="18px"
+      isLoading={isFollowLoading}
       isDisabled={false}
-      margin={"auto"}
+      margin={"0 0 0 1rem"}
       onClick={() => unfollow()}
     >
       Unfollow
     </Button>
   ) : (
     <Button
-      width="90%"
+      width="8rem"
       height="2rem"
       isLoading={isFollowLoading}
-      fontSize="18px"
       isDisabled={false}
-      margin={"auto"}
       onClick={() => follow()}
+      margin={"0 0 0 1rem"}
     >
       Follow
     </Button>

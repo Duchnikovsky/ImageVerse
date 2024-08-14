@@ -1,29 +1,5 @@
-.default {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  overflow: hidden;
-  user-select: none;
-  width: 45px;
-  min-width: 45px;
-  height: 45px;
-  border-radius: 100%;
-  box-shadow: 0px 0px 4px var(--font-color);
-}
-
-.large {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  vertical-align: middle;
-  overflow: hidden;
-  user-select: none;
-  width: 75px;
-  height: 75px;
-  border-radius: 100%;
-}
-
+.default,
+.large,
 .small {
   display: inline-flex;
   align-items: center;
@@ -31,9 +7,26 @@
   vertical-align: middle;
   overflow: hidden;
   user-select: none;
+  border-radius: 100%;
+}
+
+.default {
+  width: 45px;
+  min-width: 45px;
+  height: 45px;
+  box-shadow: 0px 0px 4px var(--font-color);
+}
+
+.large {
+  width: 10rem;
+  height: 10rem;
+  box-shadow: 1px 1px 6px var(--font-color);
+}
+
+.small {
   width: 24px;
   height: 24px;
-  border-radius: 100%;
+  box-shadow: 0px 0px 2px var(--font-color);
 }
 
 .image {
@@ -44,7 +37,7 @@
   cursor: pointer;
 }
 
-.fallback{
+.fallback {
   width: 100%;
   height: 100%;
   display: flex;
@@ -56,4 +49,12 @@
   line-height: 1;
   font-weight: 500;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .large {
+    width: 5rem;
+    min-width: 5rem;
+    height: 5rem;
+  }
 }
